@@ -1,600 +1,598 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>部落阵型</title>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>部落阵型</title>
 
-<style>
-/* ===== 主题变量（黑白灰） ===== */
-:root {
-  --bg: #f5f6f7;
-  --bg-glass: rgba(255, 255, 255, 0.55);
-  --text: #111827;
-  --text-muted: #6b7280;
-  --border: rgba(0, 0, 0, 0.08);
-  --card-blur: blur(18px);
-}
+		<style>
+			/* ===== 主题变量（黑白灰） ===== */
+			:root {
+				--bg: #f5f6f7;
+				--bg-glass: rgba(255, 255, 255, 0.55);
+				--text: #111827;
+				--text-muted: #6b7280;
+				--border: rgba(0, 0, 0, 0.08);
+				--card-blur: blur(18px);
+			}
 
-[data-theme="dark"] {
-  --bg: #0b0f12;
-  --bg-glass: rgba(30, 30, 30, 0.55);
-  --text: #e5e7eb;
-  --text-muted: #9ca3af;
-  --border: rgba(255, 255, 255, 0.12);
-}
+			[data-theme="dark"] {
+				--bg: #0b0f12;
+				--bg-glass: rgba(30, 30, 30, 0.55);
+				--text: #e5e7eb;
+				--text-muted: #9ca3af;
+				--border: rgba(255, 255, 255, 0.12);
+			}
 
-/* ===== 全局过渡 ===== */
-* {
-  transition: background 0.4s, color 0.4s, border-color 0.4s;
-}
+			/* ===== 全局过渡 ===== */
+			* {
+				transition: background 0.4s, color 0.4s, border-color 0.4s;
+			}
 
-/* ===== 基础 ===== */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-               "Microsoft YaHei", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  padding-bottom: 80px;
-}
+			/* ===== 基础 ===== */
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+					"Microsoft YaHei", sans-serif;
+				background: var(--bg);
+				color: var(--text);
+				padding-bottom: 80px;
+			}
 
-/* ===== 顶部 ===== */
-.header {
-  background: rgba(255,255,255,0.75);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border);
-  padding: 12px 16px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+			/* ===== 顶部 ===== */
+			.header {
+				background: rgba(255, 255, 255, 0.75);
+				backdrop-filter: blur(12px);
+				border-bottom: 1px solid var(--border);
+				padding: 12px 16px;
+				position: sticky;
+				top: 0;
+				z-index: 100;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
-[data-theme="dark"] .header {
-  background: rgba(15, 15, 15, 0.75);
-}
+			[data-theme="dark"] .header {
+				background: rgba(15, 15, 15, 0.75);
+			}
 
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+			.logo {
+				display: flex;
+				align-items: center;
+				gap: 10px;
+			}
 
-.logo-icon {
-  width: 36px;
-  height: 36px;
-  background: #000;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  color: #fff;
-}
+			.logo-icon {
+				width: 36px;
+				height: 36px;
+				background: #000;
+				border-radius: 10px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 20px;
+				color: #fff;
+			}
 
-[data-theme="dark"] .logo-icon {
-  background: #fff;
-  color: #000;
-}
+			[data-theme="dark"] .logo-icon {
+				background: #fff;
+				color: #000;
+			}
 
-.logo-text {
-  font-size: 18px;
-  font-weight: 600;
-}
+			.logo-text {
+				font-size: 18px;
+				font-weight: 600;
+			}
 
-/* ===== SVG 切换按钮 ===== */
-.theme-toggle {
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--text);
-}
+			/* ===== SVG 切换按钮 ===== */
+			.theme-toggle {
+				background: none;
+				border: none;
+				cursor: pointer;
+				color: var(--text);
+			}
 
-.theme-toggle svg {
-  width: 20px;
-  height: 20px;
-}
+			.theme-toggle svg {
+				width: 20px;
+				height: 20px;
+			}
 
-/* ===== 搜索 ===== */
-.search-box {
-  padding: 12px 16px;
-}
+			/* ===== 搜索 ===== */
+			.search-box {
+				padding: 12px 16px;
+			}
 
-.search-box input {
-  width: 100%;
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg-glass);
-  color: var(--text);
-  font-size: 14px;
-}
+			.search-box input {
+				width: 100%;
+				padding: 10px 14px;
+				border-radius: 999px;
+				border: 1px solid var(--border);
+				background: var(--bg-glass);
+				color: var(--text);
+				font-size: 14px;
+			}
 
-/* ===== 筛选 ===== */
-.filter-bar {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 12px 16px;
-  scrollbar-width: none;
-}
+			/* ===== 筛选 ===== */
+			.filter-bar {
+				display: flex;
+				overflow-x: auto;
+				gap: 10px;
+				padding: 12px 16px;
+				scrollbar-width: none;
+			}
 
-.filter-btn {
-  flex-shrink: 0;
-  background: var(--bg-glass);
-  border: 1px solid var(--border);
-  color: var(--text);
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-size: 13px;
-  cursor: pointer;
-}
+			.filter-btn {
+				flex-shrink: 0;
+				background: var(--bg-glass);
+				border: 1px solid var(--border);
+				color: var(--text);
+				padding: 8px 16px;
+				border-radius: 999px;
+				font-size: 13px;
+				cursor: pointer;
+			}
 
-.filter-btn.active {
-  background: #000;
-  color: #fff;
-}
+			.filter-btn.active {
+				background: #000;
+				color: #fff;
+			}
 
-[data-theme="dark"] .filter-btn.active {
-  background: #fff;
-  color: #000;
-}
+			[data-theme="dark"] .filter-btn.active {
+				background: #fff;
+				color: #000;
+			}
 
-/* ===== 卡片 ===== */
-.container {
-  padding: 0 14px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
+			/* ===== 卡片 ===== */
+			.container {
+				padding: 0 14px;
+				max-width: 1200px;
+				margin: 0 auto;
+			}
 
-.card-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
-}
+			.card-list {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 16px;
+			}
 
-@media (min-width: 768px) {
-  .card-list { grid-template-columns: repeat(2, 1fr); }
-}
+			@media (min-width: 768px) {
+				.card-list {
+					grid-template-columns: repeat(2, 1fr);
+				}
+			}
 
-@media (min-width: 1200px) {
-  .card-list { grid-template-columns: repeat(3, 1fr); }
-}
+			@media (min-width: 1200px) {
+				.card-list {
+					grid-template-columns: repeat(3, 1fr);
+				}
+			}
 
-.card {
-  backdrop-filter: var(--card-blur);
-  -webkit-backdrop-filter: var(--card-blur);
-  background: var(--bg-glass);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-}
+			.card {
+				backdrop-filter: var(--card-blur);
+				-webkit-backdrop-filter: var(--card-blur);
+				background: var(--bg-glass);
+				border: 1px solid var(--border);
+				border-radius: 18px;
+				overflow: hidden;
+			}
 
-.card-img {
-  width: 100%;
-  aspect-ratio: 16 / 10;
-  background: linear-gradient(135deg, #e5e7eb, #d1d5db);
-}
+			.card-img {
+				width: 100%;
+				aspect-ratio: 16 / 10;
+				background: linear-gradient(135deg, #e5e7eb, #d1d5db);
+			}
 
-[data-theme="dark"] .card-img {
-  background: linear-gradient(135deg, #374151, #1f2937);
-}
+			[data-theme="dark"] .card-img {
+				background: linear-gradient(135deg, #374151, #1f2937);
+			}
 
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+			.card-img img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
 
-.card-body {
-  padding: 14px;
-}
+			.card-body {
+				padding: 14px;
+			}
 
-.card-title {
-  font-size: 16px;
-  margin-bottom: 6px;
-}
+			.card-title {
+				font-size: 16px;
+				margin-bottom: 6px;
+			}
 
-.update-time {
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-bottom: 12px;
-}
+			.update-time {
+				font-size: 13px;
+				color: var(--text-muted);
+				margin-bottom: 12px;
+			}
 
-.card-footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+			.card-footer {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 
-.tag {
-  font-size: 12px;
-  color: var(--text-muted);
-}
+			.tag {
+				font-size: 12px;
+				color: var(--text-muted);
+			}
 
-/* ===== 玻璃按钮 ===== */
-.open-btn {
-  background: rgba(255,255,255,0.7);
-  color: #111827;
-  text-decoration: none;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 12px;
-  border: 1px solid rgba(0,0,0,0.1);
-}
+			/* ===== 玻璃按钮 ===== */
+			.open-btn {
+				background: rgba(255, 255, 255, 0.7);
+				color: #111827;
+				text-decoration: none;
+				padding: 6px 14px;
+				border-radius: 999px;
+				font-size: 12px;
+				border: 1px solid rgba(0, 0, 0, 0.1);
+			}
 
-[data-theme="dark"] .open-btn {
-  background: rgba(255,255,255,0.15);
-  color: #e5e7eb;
-}
+			[data-theme="dark"] .open-btn {
+				background: rgba(255, 255, 255, 0.15);
+				color: #e5e7eb;
+			}
 
-/* ===== 最近记录 ===== */
-.history {
-  margin-top: 24px;
-}
+			/* ===== 最近记录 ===== */
+			.history {
+				margin-top: 24px;
+			}
 
-.history-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-}
+			.history-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				margin-bottom: 10px;
+			}
 
-.history-title {
-  font-size: 14px;
-  color: var(--text-muted);
-}
+			.history-title {
+				font-size: 14px;
+				color: var(--text-muted);
+			}
 
-.clear-btn {
-  font-size: 12px;
-  color: var(--text-muted);
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+			.clear-btn {
+				font-size: 12px;
+				color: var(--text-muted);
+				background: none;
+				border: none;
+				cursor: pointer;
+			}
 
-.history-item {
-  background: var(--bg-glass);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 10px 12px;
-  font-size: 13px;
-  cursor: pointer;
-}
+			.history-item {
+				background: var(--bg-glass);
+				border: 1px solid var(--border);
+				border-radius: 12px;
+				padding: 10px 12px;
+				font-size: 13px;
+				cursor: pointer;
+			}
 
-.history-item:hover {
-  background: rgba(0,0,0,0.04);
-}
+			.history-item:hover {
+				background: rgba(0, 0, 0, 0.04);
+			}
 
-[data-theme="dark"] .history-item:hover {
-  background: rgba(255,255,255,0.08);
-}
+			[data-theme="dark"] .history-item:hover {
+				background: rgba(255, 255, 255, 0.08);
+			}
 
-/* ===== Toast ===== */
-.toast {
-  position: fixed;
-  bottom: 90px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111827;
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 999px;
-  font-size: 13px;
-  opacity: 0;
-  transition: 0.3s;
-}
+			/* ===== Toast ===== */
+			.toast {
+				position: fixed;
+				bottom: 90px;
+				left: 50%;
+				transform: translateX(-50%);
+				background: #111827;
+				color: #fff;
+				padding: 10px 18px;
+				border-radius: 999px;
+				font-size: 13px;
+				opacity: 0;
+				transition: 0.3s;
+			}
 
-[data-theme="dark"] .toast {
-  background: #e5e7eb;
-  color: #111827;
-}
+			[data-theme="dark"] .toast {
+				background: #e5e7eb;
+				color: #111827;
+			}
 
-.toast.show {
-  opacity: 1;
-}
-</style>
-</head>
+			.toast.show {
+				opacity: 1;
+			}
+		</style>
+	</head>
 
-<body>
+	<body>
 
-<!-- 顶部 -->
-<header class="header">
-  <div class="logo">
-    <div class="logo-icon">🛡</div>
-    <span class="logo-text">部落阵型</span>
-  </div>
-  <button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
-    <!-- 浅色：上半圆 -->
-    <svg id="iconLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4"/>
-      <path d="M12 2a10 10 0 0 1 0 20"/>
-    </svg>
-    <!-- 深色：下半圆 -->
-    <svg id="iconDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
-      <circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4"/>
-      <path d="M12 22a10 10 0 0 1 0-20"/>
-    </svg>
-  </button>
-</header>
+		<!-- 顶部 -->
+		<header class="header">
+			<div class="logo">
+				<div class="logo-icon">🛡</div>
+				<span class="logo-text">部落阵型</span>
+			</div>
+			<button class="theme-toggle" onclick="toggleTheme()" aria-label="切换主题">
+				<!-- 浅色：上半圆 -->
+				<svg id="iconLight" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+					<circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" />
+					<path d="M12 2a10 10 0 0 1 0 20" />
+				</svg>
+				<!-- 深色：下半圆 -->
+				<svg id="iconDark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+					style="display:none;">
+					<circle cx="12" cy="12" r="10" stroke-dasharray="31.4 31.4" />
+					<path d="M12 22a10 10 0 0 1 0-20" />
+				</svg>
+			</button>
+		</header>
 
-<!-- 搜索 -->
-<div class="search-box">
-  <input id="searchInput" placeholder="搜索阵型名称或 TH…" oninput="saveSearch(); render()">
-</div>
+		<!-- 搜索 -->
+		<div class="search-box">
+			<input id="searchInput" placeholder="搜索阵型名称或 TH…" oninput="saveSearch(); render()">
+		</div>
 
-<!-- 筛选 -->
-<div class="filter-bar" id="filterBar"></div>
+		<!-- 筛选 -->
+		<div class="filter-bar" id="filterBar"></div>
 
-<!-- 列表 -->
-<div class="container">
-  <div class="card-list" id="list"></div>
+		<!-- 列表 -->
+		<div class="container">
+			<div class="card-list" id="list"></div>
 
-  <!-- 最近打开 -->
-  <div class="history">
-    <div class="history-header">
-      <div class="history-title">🕘 最近打开</div>
-      <button class="clear-btn" onclick="clearHistory()">清除记录</button>
-    </div>
-    <div class="history-list" id="historyList"></div>
-  </div>
-</div>
+			<!-- 最近打开 -->
+			<div class="history">
+				<div class="history-header">
+					<div class="history-title">🕘 最近打开</div>
+					<button class="clear-btn" onclick="clearHistory()">清除记录</button>
+				</div>
+				<div class="history-list" id="historyList"></div>
+			</div>
+		</div>
 
-<!-- Toast -->
-<div class="toast" id="toast">🚀 正在跳转到阵型…</div>
+		<!-- Toast -->
+		<div class="toast" id="toast">🚀 正在跳转到阵型…</div>
 
-<script>
-/* ===============================
+		<script>
+			/* ===============================
    阵型配置
 =============================== */
-const layouts = [
-	
-	{
-	  th: "TH18",
-	  name: "TH18 x1801",
-	  update: "2026-05-02",
-	  img: "/base/18/x1801.jpg",
-	  link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdYRIDVPt8onmizi2XodQB"
-	} ,
-	
-	{
-	  th: "TH18",
-	  name: "TH18 x1802",
-	  update: "2026-05-02",
-	  img: "/base/18/x1802.jpg",
-	  link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHyDMXgp0CC2N63QTlvndn4"
-	} ,
-	
-	{
-	  th: "TH18",
-	  name: "TH18 x1803",
-	  update: "2026-05-02",
-	  img: "/base/18/x1803.jpg",
-	  link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHx6NUiX8hgPuiR7349FTFF"
-	} ,
-	
-	
-	{
-	  th: "TH18",
-	  name: "TH18 x1804",
-	  update: "2026-05-02",
-	  img: "/base/18/x1804.jpg",
-	  link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHxw3Vu5hV6X5K7iJXJVpTo"
-	} ,
-	
-	
-	
-	{
-	  th: "TH18",
-	  name: "TH18 x1805",
-	  update: "2026-05-02",
-	  img: "/base/18/x1805.jpg",
-	  link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAOQAAAAJpOqXTlGlEmZkXWH0XdxeO"
-	} ,
-	
-	{
-	  th: "TH18",
-	  name: "TH18 180",
-	  update: "2026-05-02",
-	  img: "/base/18/180.jpg",
-	  link: ""
-	} ,
-	
-	
-  {
-    th: "TH18",
-    name: "TH18 k1801",
-    update: "2026-05-02",
-    img: "/base/18/k1801.jpg",
-    link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXWtYdulOB64KpC4BWj1I"
-  },
-  
- {
-   th: "TH18",
-   name: "TH18 k1802",
-   update: "2026-05-02",
-   img: "/base/18/k1802.jpg",
-   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXXMYnVALxRk-D5uvEre1"
- },
-  
-  
- {
-   th: "TH18",
-   name: "TH18 k1803",
-   update: "2026-05-02",
-   img: "/base/18/k1803.jpg",
-   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXXt76Tqhi881q1Gn7wmA"
- } ,
-  
-  
-  {
-    th: "TH18",
-    name: "TH18 k1804",
-    update: "2026-05-02",
-    img: "/base/18/k1804.jpg",
-    link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMbjtK28fnXZaEEGLjnh14h"
-  } ,
-  
-  
-  
-  {
-    th: "TH18",
-    name: "TH18 k180",
-    update: "2026-05-02",
-    img: "/base/18/k180.jpg",
-    link: ""
-  } ,
-  
-  // {
-  //   th: "TH18",
-  //   name: "TH18 k180",
-  //   update: "2026-01-15",
-  //   img: "/base/18/k180.jpg",
-  //   link: ""
-  // } ,
-  
-  // {
-  //   th: "TH18",
-  //   name: "TH18 k180",
-  //   update: "2026-01-15",
-  //   img: "/base/18/k180.jpg",
-  //   link: ""
-  // } ,
-  
-  // {
-  //   th: "TH18",
-  //   name: "TH18 k180",
-  //   update: "2026-01-15",
-  //   img: "/base/18/k180.jpg",
-  //   link: ""
-  // } ,
-  
-  
-  // ------------------------------
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-    // ------------------------------
-	
-	
-	
-	{
-	  th: "TH16",
-	  name: "TH16 e1601",
-	  update: "2025-12-20",
-	  img: "/base/16/e1601.jpg",
-	  link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH16%3AWB%3AAAAASwAAAAH-hkG2djbo0znHG_b6mQk3"
-	},
-	
-	
-	
-	
-	
-  
-  
-  // {
-  //   th: "TH17",
-  //   name: "TH17 null",
-  //   update: "2026-01-10",
-  //   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH17",
-  //   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH17_1"
-  // },
-  // {
-  //   th: "TH16",
-  //   name: "TH16 null",
-  //   update: "2025-12-20",
-  //   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH16",
-  //   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH16_WAR"
-  // },
-  // {
-  //   th: "TH15",
-  //   name: "TH15 null",
-  //   update: "2025-11-30",
-  //   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH15",
-  //   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH15_1"
-  // },
-  // {
-  //   th: "TH14",
-  //   name: "TH14 null",
-  //   update: "2025-11-10",
-  //   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH14",
-  //   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH14_FARM"
-  // },
-  // {
-  //   th: "TH13",
-  //   name: "TH13 null",
-  //   update: "2025-10-25",
-  //   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH13",
-  //   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH13_WAR"
-  // }
-];
+			const layouts = [
 
-/* ===============================
-   初始化
-=============================== */
-const searchInput = document.getElementById("searchInput");
-const filterBar = document.getElementById("filterBar");
-const list = document.getElementById("list");
-const historyList = document.getElementById("historyList");
+				{
+					th: "TH18",
+					name: "TH18 x1801",
+					update: "2026-05-02",
+					img: "/base/18/x1801.jpg",
+					link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdYRIDVPt8onmizi2XodQB"
+				},
 
-let historyNames = JSON.parse(localStorage.getItem("history") || "[]");
+				{
+					th: "TH18",
+					name: "TH18 x1802",
+					update: "2026-05-02",
+					img: "/base/18/x1802.jpg",
+					link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHyDMXgp0CC2N63QTlvndn4"
+				},
 
-/* ===== 主题初始化（优先系统） ===== */
-const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-const savedTheme = localStorage.getItem("theme");
+				{
+					th: "TH18",
+					name: "TH18 x1803",
+					update: "2026-05-02",
+					img: "/base/18/x1803.jpg",
+					link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHx6NUiX8hgPuiR7349FTFF"
+				},
 
-if (savedTheme) {
-  document.body.setAttribute("data-theme", savedTheme);
-} else if (prefersDark) {
-  document.body.setAttribute("data-theme", "dark");
-}
 
-updateIcon();
+				{
+					th: "TH18",
+					name: "TH18 x1804",
+					update: "2026-05-02",
+					img: "/base/18/x1804.jpg",
+					link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAUwAAAAHxw3Vu5hV6X5K7iJXJVpTo"
+				},
 
-/* ===============================
-   筛选
-=============================== */
-["全部","TH18","TH17","TH16","TH15","TH14","TH13"].forEach(tag => {
-  const btn = document.createElement("button");
-  btn.className = "filter-btn" + (tag === "全部" ? " active" : "");
-  btn.textContent = tag;
-  btn.onclick = () => {
-    document.querySelectorAll(".filter-btn")
-      .forEach(b => b.classList.remove("active"));
-    btn.classList.add("active");
-    render();
-  };
-  filterBar.appendChild(btn);
-});
 
-/* ===============================
-   渲染
-=============================== */
-function render() {
-  const keyword = searchInput.value.toLowerCase();
-  const activeTag = document.querySelector(".filter-btn.active").textContent;
 
-  list.innerHTML = "";
+				// {
+				// 	th: "TH18",
+				// 	name: "TH18 k180",
+				// 	update: "2026-05-02",
+				// 	img: "/base/18/k180.jpg",
+				// 	link: ""
+				// },
 
-  layouts
-    .filter(l =>
-      (activeTag === "全部" || l.th === activeTag) &&
-      (l.name.toLowerCase().includes(keyword) ||
-       l.th.toLowerCase().includes(keyword))
-    )
-    .forEach(l => {
-      list.innerHTML += `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+				// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+
+				{
+					th: "TH18",
+					name: "TH18 k1801",
+					update: "2026-05-02",
+					img: "/base0/18/k1801.jpg",
+					link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXWtYdulOB64KpC4BWj1I"
+				},
+
+				{
+					th: "TH18",
+					name: "TH18 k1802",
+					update: "2026-05-02",
+					img: "/base0/18/k1802.jpg",
+					link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXXMYnVALxRk-D5uvEre1"
+				},
+
+
+				{
+					th: "TH18",
+					name: "TH18 k1803",
+					update: "2026-05-02",
+					img: "/base0/18/k1803.jpg",
+					link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMdXXt76Tqhi881q1Gn7wmA"
+				},
+
+
+				{
+					th: "TH18",
+					name: "TH18 k1804",
+					update: "2026-05-02",
+					img: "/base0/18/k1804.jpg",
+					link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH18%3AWB%3AAAAAAAAAAAMbjtK28fnXZaEEGLjnh14h"
+				},
+				{
+					th: "TH18",
+					name: "TH18 x1805",
+					update: "2026-05-02",
+					img: "/base/18/x1805.jpg",
+					link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH18%3AHV%3AAAAAOQAAAAJpOqXTlGlEmZkXWH0XdxeO"
+				},
+
+
+
+
+				// {
+				// 	th: "TH18",
+				// 	name: "TH18 180",
+				// 	update: "2026-05-02",
+				// 	img: "/base/18/180.jpg",
+				// 	link: ""
+				// },
+
+				// ------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+				// ------------------------------
+
+
+
+				{
+					th: "TH16",
+					name: "TH16 e1601",
+					update: "2025-12-20",
+					img: "/base/16/e1601.jpg",
+					link: "https://link.clashofclans.com/en/?action=OpenLayout&id=TH16%3AWB%3AAAAASwAAAAH-hkG2djbo0znHG_b6mQk3"
+				},
+
+				// ------------------------------
+
+
+
+
+
+				// {
+				//   th: "TH17",
+				//   name: "TH17 null",
+				//   update: "2026-01-10",
+				//   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH17",
+				//   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH17_1"
+				// },
+				// {
+				//   th: "TH16",
+				//   name: "TH16 null",
+				//   update: "2025-12-20",
+				//   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH16",
+				//   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH16_WAR"
+				// },
+				// {
+				//   th: "TH15",
+				//   name: "TH15 null",
+				//   update: "2025-11-30",
+				//   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH15",
+				//   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH15_1"
+				// },
+				// {
+				//   th: "TH14",
+				//   name: "TH14 null",
+				//   update: "2025-11-10",
+				//   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH14",
+				//   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH14_FARM"
+				// },
+				// {
+				//   th: "TH13",
+				//   name: "TH13 null",
+				//   update: "2025-10-25",
+				//   img: "https://via.placeholder.com/800x500/e5e7eb/111827?text=TH13",
+				//   link: "https://link.clashofclans.com/cn?action=OpenLayout&id=TH13_WAR"
+				// }
+			];
+
+			/* ===============================
+			   初始化
+			=============================== */
+			const searchInput = document.getElementById("searchInput");
+			const filterBar = document.getElementById("filterBar");
+			const list = document.getElementById("list");
+			const historyList = document.getElementById("historyList");
+
+			let historyNames = JSON.parse(localStorage.getItem("history") || "[]");
+
+			/* ===== 主题初始化（优先系统） ===== */
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			const savedTheme = localStorage.getItem("theme");
+
+			if (savedTheme) {
+				document.body.setAttribute("data-theme", savedTheme);
+			} else if (prefersDark) {
+				document.body.setAttribute("data-theme", "dark");
+			}
+
+			updateIcon();
+
+			/* ===============================
+			   筛选
+			=============================== */
+			["全部", "TH18", "TH17", "TH16", "TH15", "TH14", "TH13"].forEach(tag => {
+				const btn = document.createElement("button");
+				btn.className = "filter-btn" + (tag === "全部" ? " active" : "");
+				btn.textContent = tag;
+				btn.onclick = () => {
+					document.querySelectorAll(".filter-btn")
+						.forEach(b => b.classList.remove("active"));
+					btn.classList.add("active");
+					render();
+				};
+				filterBar.appendChild(btn);
+			});
+
+			/* ===============================
+			   渲染
+			=============================== */
+			function render() {
+				const keyword = searchInput.value.toLowerCase();
+				const activeTag = document.querySelector(".filter-btn.active").textContent;
+
+				list.innerHTML = "";
+
+				layouts
+					.filter(l =>
+						(activeTag === "全部" || l.th === activeTag) &&
+						(l.name.toLowerCase().includes(keyword) ||
+							l.th.toLowerCase().includes(keyword))
+					)
+					.forEach(l => {
+						list.innerHTML += `
         <div class="card">
           <div class="card-img">
             <img src="${l.img}" alt="">
@@ -612,73 +610,73 @@ function render() {
           </div>
         </div>
       `;
-    });
+					});
 
-  renderHistory();
-}
+				renderHistory();
+			}
 
-/* ===============================
-   最近记录
-=============================== */
-function addHistory(name) {
-  historyNames.unshift(name);
-  historyNames = [...new Set(historyNames)].slice(0, 5);
-  localStorage.setItem("history", JSON.stringify(historyNames));
-  renderHistory();
-}
+			/* ===============================
+			   最近记录
+			=============================== */
+			function addHistory(name) {
+				historyNames.unshift(name);
+				historyNames = [...new Set(historyNames)].slice(0, 5);
+				localStorage.setItem("history", JSON.stringify(historyNames));
+				renderHistory();
+			}
 
-function renderHistory() {
-  historyList.innerHTML = historyNames.length
-    ? historyNames.map(name => {
-        const layout = layouts.find(l => l.name === name);
-        return layout
-          ? `<div class="history-item"
+			function renderHistory() {
+				historyList.innerHTML = historyNames.length ?
+					historyNames.map(name => {
+						const layout = layouts.find(l => l.name === name);
+						return layout ?
+							`<div class="history-item"
                onclick="window.open('${layout.link}', '_blank')">
                ${name}
-             </div>`
-          : "";
-      }).join("")
-    : `<div class="history-item">暂无记录</div>`;
-}
+             </div>` :
+							"";
+					}).join("") :
+					`<div class="history-item">暂无记录</div>`;
+			}
 
-function clearHistory() {
-  historyNames = [];
-  localStorage.removeItem("history");
-  renderHistory();
-}
+			function clearHistory() {
+				historyNames = [];
+				localStorage.removeItem("history");
+				renderHistory();
+			}
 
-/* ===============================
-   工具
-=============================== */
-function saveSearch() {
-  localStorage.setItem("search", searchInput.value);
-}
+			/* ===============================
+			   工具
+			=============================== */
+			function saveSearch() {
+				localStorage.setItem("search", searchInput.value);
+			}
 
-function toggleTheme() {
-  const html = document.body;
-  const theme = html.getAttribute("data-theme");
-  const next = theme === "light" ? "dark" : "light";
+			function toggleTheme() {
+				const html = document.body;
+				const theme = html.getAttribute("data-theme");
+				const next = theme === "light" ? "dark" : "light";
 
-  html.setAttribute("data-theme", next);
-  localStorage.setItem("theme", next);
-  updateIcon();
-}
+				html.setAttribute("data-theme", next);
+				localStorage.setItem("theme", next);
+				updateIcon();
+			}
 
-function updateIcon() {
-  const light = document.getElementById("iconLight");
-  const dark = document.getElementById("iconDark");
+			function updateIcon() {
+				const light = document.getElementById("iconLight");
+				const dark = document.getElementById("iconDark");
 
-  if (document.body.getAttribute("data-theme") === "dark") {
-    light.style.display = "none";
-    dark.style.display = "block";
-  } else {
-    light.style.display = "block";
-    dark.style.display = "none";
-  }
-}
+				if (document.body.getAttribute("data-theme") === "dark") {
+					light.style.display = "none";
+					dark.style.display = "block";
+				} else {
+					light.style.display = "block";
+					dark.style.display = "none";
+				}
+			}
 
-render();
-</script>
+			render();
+		</script>
 
-</body>
+	</body>
 </html>
